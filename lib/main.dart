@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './text_control.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -36,22 +38,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("My own AppBar"),
         ),
-        body: Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Text(
-                texts[textIndex],
-                style: TextStyle(fontSize: 28),
-                textAlign: TextAlign.center,
-              ),
-              ElevatedButton(
-                child: Text("Hey"),
-                onPressed: changeText
-              )
-            ],
-          ),
-        ),
+        body: TextControl(texts, textIndex, changeText),
       ),
     );
   }
