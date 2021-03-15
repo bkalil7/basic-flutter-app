@@ -10,6 +10,25 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var textIndex = 0;
+
+  final texts = [
+    "Hey, this is my first dynamic app",
+    "Keep pressing, keep changing",
+    "Don't know what else to write"
+  ];
+
+  void changeText() {
+    setState(() {
+      if(textIndex + 1 < texts.length){
+        textIndex++;
+      }
+      else if (textIndex + 1 == texts.length) {
+        textIndex = 0;
+      }
+    });  
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,13 +41,13 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               Text(
-                "My first text",
+                texts[textIndex],
                 style: TextStyle(fontSize: 28),
                 textAlign: TextAlign.center,
               ),
               ElevatedButton(
                 child: Text("Hey"),
-                onPressed: null
+                onPressed: changeText
               )
             ],
           ),
