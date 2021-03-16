@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './text_control.dart';
+import './end.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,13 +23,14 @@ class _MyAppState extends State<MyApp> {
 
   void changeText() {
     setState(() {
-      if(textIndex + 1 < texts.length){
         textIndex++;
-      }
-      else if (textIndex + 1 == texts.length) {
-        textIndex = 0;
-      }
     });  
+  }
+
+  void resetApp() {
+    setState(() {
+      textIndex = 0;
+    });
   }
 
   @override
@@ -38,7 +40,9 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("My own AppBar"),
         ),
-        body: TextControl(texts, textIndex, changeText),
+        body: textIndex != texts.length
+        ? TextControl(texts, textIndex, changeText)
+        : End(resetApp),
       ),
     );
   }

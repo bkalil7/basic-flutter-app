@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './text.dart';
+
 class TextControl extends StatelessWidget {
   final List<String> texts;
   final int textIndex;
@@ -9,21 +11,16 @@ class TextControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-          child: Column(
-            children: [
-              Text(
-                texts[textIndex],
-                style: TextStyle(fontSize: 28),
-                textAlign: TextAlign.center,
-              ),
-              ElevatedButton(
-                child: Text("Hey"),
-                onPressed: changeText
-              )
-            ],
+    return Column(
+        children: [
+          MyText(
+            texts[textIndex],
           ),
-    );
+          ElevatedButton(
+            child: Text("Hey"),
+            onPressed: changeText
+          )
+        ],
+      );
   }
 }
